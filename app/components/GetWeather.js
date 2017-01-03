@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import axios from 'axios';
 
 export default class GetWeather extends Component {
@@ -23,7 +24,9 @@ export default class GetWeather extends Component {
 		const url = 'http://api.openweathermap.org/data/2.5/';
 		const weatherUrl = url + 'weather';
 		const forecastUrl = url + 'forecast/daily';
-				
+
+		browserHistory.push('/forecast/' + cityName);
+				/*
 		axios.get(weatherUrl, {
 				params: {
 					q: cityName,
@@ -51,7 +54,7 @@ export default class GetWeather extends Component {
 			})
 			.catch(error => {
 				console.error('error: ', error);
-			});
+			});*/
 	}
 
 	render() {
@@ -94,4 +97,4 @@ GetWeather.defaultProps = {
 	labelClass: '',
 	labelStyle: {},
 	inputStyle: {}
-}
+};
