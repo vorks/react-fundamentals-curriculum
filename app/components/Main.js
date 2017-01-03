@@ -1,4 +1,5 @@
 import React from 'react';
+import GetWeather from './GetWeather';
 
 const styles = {
 	brand: {
@@ -40,13 +41,7 @@ export default function Main(props) {
 						<a className="navbar-brand" href="#" style={styles.brand}>Clever Title</a>
 					</div>
 					<div className="collapse navbar-collapse" id="navbar">
-						<form className="navbar-form navbar-right">
-							<div className="form-group">
-								<label className="sr-only">Enter a City and State</label>
-								<input className="form-control" type="text" placeholder="Melbourne, Australia" />
-							</div>
-							<button className="btn btn-success" type="submit">Get Weather</button>
-						</form>
+						<GetWeather formClass="navbar-form navbar-right" labelClass="sr-only" />
 					</div>
 				</div>
 			</nav>

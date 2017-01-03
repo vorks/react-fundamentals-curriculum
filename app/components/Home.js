@@ -1,4 +1,5 @@
 import React from 'react';
+import GetWeather from './GetWeather';
 
 const styles = {
 	container: {
@@ -30,13 +31,12 @@ const styles = {
 export default function Home(props) {
 	return (
 		<div style={styles.container}>
-		  <form style={styles.form}>
-		  	<div className="form-group" style={styles.group}>
-			  	<label className="h1" style={styles.label}>Enter a City and State</label>
-			  	<input className="form-control" placeholder="Melbourne, Victoria" style={styles.input} />
-		  	</div>
-		  	<button className="btn btn-success" type="submit">Get Weather</button>
-		  </form>
+			<GetWeather
+				formStyle={styles.form}
+				groupStyle={styles.group}
+				labelClass="h1"
+				labelStyle={styles.label}
+				inputStyle={styles.input} />
 		</div>
 	);
 }
