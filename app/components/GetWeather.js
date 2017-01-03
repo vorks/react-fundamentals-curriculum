@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import axios from 'axios';
 
 export default class GetWeather extends Component {
 	constructor(props) {
@@ -15,7 +16,42 @@ export default class GetWeather extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log('value:', this.state.value);
+
+		const cityName = this.state.value;
+		const apiKey = '31c817fcb02c5a0b447e11df5143fd1e';
+		const wType = 'accurate';
+		const url = 'http://api.openweathermap.org/data/2.5/';
+		const weatherUrl = url + 'weather';
+		const forecastUrl = url + 'forecast/daily';
+				
+		axios.get(weatherUrl, {
+				params: {
+					q: cityName,
+					type: wType,
+					APPID: apiKey
+				}
+			})
+			.then(response => {
+				console.log('response: ', response);
+			})
+			.catch(error => {
+				console.error('error: ', error);
+			});
+		
+		axios.get(forecastUrl, {
+				params: {
+					q: cityName,
+					cnt: 5,
+					type: wType,
+					APPID: apiKey	
+				}
+			})
+			.then(response => {
+				console.log('response: ', response);
+			})
+			.catch(error => {
+				console.error('error: ', error);
+			});
 	}
 
 	render() {
