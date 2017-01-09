@@ -26,35 +26,6 @@ export default class GetWeather extends Component {
 		const forecastUrl = url + 'forecast/daily';
 
 		browserHistory.push('/forecast/' + cityName);
-				/*
-		axios.get(weatherUrl, {
-				params: {
-					q: cityName,
-					type: wType,
-					APPID: apiKey
-				}
-			})
-			.then(response => {
-				console.log('response: ', response);
-			})
-			.catch(error => {
-				console.error('error: ', error);
-			});
-		
-		axios.get(forecastUrl, {
-				params: {
-					q: cityName,
-					cnt: 5,
-					type: wType,
-					APPID: apiKey	
-				}
-			})
-			.then(response => {
-				console.log('response: ', response);
-			})
-			.catch(error => {
-				console.error('error: ', error);
-			});*/
 	}
 
 	render() {

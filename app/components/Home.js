@@ -1,5 +1,5 @@
 import React from 'react';
-import GetWeather from './GetWeather';
+import GetCity from './GetCity';
 
 const styles = {
 	container: {
@@ -31,7 +31,7 @@ const styles = {
 export default function Home(props) {
 	return (
 		<div style={styles.container}>
-			<GetWeather
+			<GetCity
 				formStyle={styles.form}
 				groupStyle={styles.group}
 				labelClass="h1"

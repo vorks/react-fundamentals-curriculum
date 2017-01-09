@@ -1,9 +1,44 @@
 import React, { Component } from 'react';
+import Day from './Day';
+
+const styles = {
+  city: {
+    color: '#333',
+    fontWeight: 100,
+    fontSize: 65,
+    textAlign: 'center'
+  },
+  days: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    margin: '50px auto',
+    maxWidth: 1200
+  }
+}
 
 export default class Forecast extends Component {
-	render() {
-		return (
-			<div>Forecast Component</div>
-		);
-	}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      city: '',
+      forecastData: {}
+    }
+  }
+
+  getDay(item) {
+    return <Day key={item.dt} day={item} />
+  }
+
+  render() {
+    return (
+      <div>
+        <h1 style={styles.city}>{this.props.city}</h1>
+        <div style={styles.days}>{this.props.forecastData.list.map(this.getDay)}</div>
+      </div>
+    );
+  }
 }
