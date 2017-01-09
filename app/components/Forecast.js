@@ -23,14 +23,11 @@ export default class Forecast extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      city: '',
-      forecastData: {}
-    }
+    this.getDay = this.getDay.bind(this);
   }
 
-  getDay(item) {
-    return <Day key={item.dt} day={item} />
+  getDay(day) {
+    return <Day key={day.dt} city={this.props.city} day={day} />
   }
 
   render() {

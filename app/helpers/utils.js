@@ -24,7 +24,15 @@ var monthsMap = {
 };
 
 function convertTemp (kelvin) {
-  return (kelvin - 273.15)* 1.8000 + 32.00
+  return kelvin - 273.15;
+}
+
+function convertTempToCelcius (kelvin) {
+  return Math.round(convertTemp(kelvin));
+}
+
+function convertTempToFahrenheit (kelvin) {
+  return Math.round(convertTemp(kelvin) * 1.8000 + 32.00);
 }
 
 function getDate (unixTimestmap) {
@@ -34,4 +42,4 @@ function getDate (unixTimestmap) {
   return day + ', ' + month;
 }
 
-export { convertTemp, getDate };
+export { convertTempToCelcius, convertTempToFahrenheit, getDate };

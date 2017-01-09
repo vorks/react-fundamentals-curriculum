@@ -2,30 +2,22 @@ import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 
-export default class GetWeather extends Component {
+export default class GetCity extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {value: ''};
+		this.state = {city: ''};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange(event) {
-		this.setState({value: event.target.value});
+		this.setState({city: event.target.value});
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-
-		const cityName = this.state.value;
-		const apiKey = '31c817fcb02c5a0b447e11df5143fd1e';
-		const wType = 'accurate';
-		const url = 'http://api.openweathermap.org/data/2.5/';
-		const weatherUrl = url + 'weather';
-		const forecastUrl = url + 'forecast/daily';
-
-		browserHistory.push('/forecast/' + cityName);
+		this.context.router.push('/forecast/' + this.state.city);
 	}
 
 	render() {
@@ -42,7 +34,7 @@ export default class GetWeather extends Component {
 						className="form-control"
 						type="text"
 						placeholder="Melbourne, Australia"
-						value={this.state.value}
+						value={this.state.city}
 						onChange={this.handleChange}
 						style={this.props.inputStyle} />
 				</div>
@@ -52,20 +44,24 @@ export default class GetWeather extends Component {
 	}
 }
 
-GetWeather.propTypes = {
-	formClass: PropTypes.string,
-	formStyle: PropTypes.object,
-	groupStyle: PropTypes.object,
-	labelClass: PropTypes. string,
-	labelStyle: PropTypes.object,
-	inputStyle: React.PropTypes.object
-};
+GetCity.contextTypes = {
+	router: React.PropTypes.object.isRequired
+}
 
-GetWeather.defaultProps = {
+GetCity.defaultProps = {
 	formClass: '',
 	formStyle: {},
 	groupStyle: {},
 	labelClass: '',
 	labelStyle: {},
 	inputStyle: {}
+};
+
+GetCity.propTypes = {
+	formClass: PropTypes.string,
+	formStyle: PropTypes.object,
+	groupStyle: PropTypes.object,
+	labelClass: PropTypes. string,
+	labelStyle: PropTypes.object,
+	inputStyle: React.PropTypes.object
 };
