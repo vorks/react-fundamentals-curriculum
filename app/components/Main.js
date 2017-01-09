@@ -1,5 +1,6 @@
 import React from 'react';
 import GetCity from './GetCity';
+import Navbar from './Navbar';
 
 const styles = {
   brand: {
@@ -8,7 +9,7 @@ const styles = {
   children: {
     paddingLeft: 0,
     paddingRight: 0,
-    height: 'calc(100% - 50px)'
+    height: 'calc(100% - 90px)'
   },
   container: {
     height: '100%',
@@ -24,28 +25,8 @@ const styles = {
 export default function Main(props) {
   return (
     <div style={styles.container}>
-      <nav className="navbar navbar-default" style={styles.navbar}>
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#navbar"
-              aria-expanded="false">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
-            <a className="navbar-brand" href="#" style={styles.brand}>Clever Title</a>
-          </div>
-          <div className="collapse navbar-collapse" id="navbar">
-            <GetCity formClass="navbar-form navbar-right" labelClass="sr-only" />
-          </div>
-        </div>
-      </nav>
-      <div className="container-fluid" style={styles.children}>
+      <Navbar />
+      <div style={styles.children}>
         {props.children}
       </div>
     </div>
